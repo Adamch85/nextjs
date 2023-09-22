@@ -2,7 +2,7 @@
 import {createClient} from "@supabase/supabase-js";
 
 const supaclient = createClient(process.env.SUPABASE_URL, process.env.SUPABASE_KEY);
-export default function handler(req, res) {
+export default async function handler(req, res) {
 
   try {
     if (req.method === "POST") {
