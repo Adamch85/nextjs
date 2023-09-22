@@ -7,12 +7,12 @@ export default async function handler(req, res) {
   try {
     if (req.method === "POST") {
 
-      let webhook_data = req.json()
-      console.log(webhook_data)
+      let webhook_data = req.body[0]
+      let tx = webhook_data["transaction"]
 
-      const { data, error } = await supaclient
-        .from('txs')
-        .upsert(webhook_data[0].transaction)
+     const { data, error } = await supaclient
+       .from('txs')
+       .upsert(tx)
       res.status(200).json("success")
 
       console.log(data, error)
