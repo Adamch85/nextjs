@@ -9,7 +9,7 @@ export default async function handler(req, res) {
 
       let webhook_data = req.body.transaction
 
-      const { data, error } = await supabase
+      const { data, error } = await supaclient
         .from('txs')
         .upsert(webhook_data)
       res.status(200).json("success")
