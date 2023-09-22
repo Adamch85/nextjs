@@ -7,7 +7,7 @@ export default async function handler(req, res) {
   try {
     if (req.method === "POST") {
 
-      let webhook_data = JSON.parse(req.body)
+      let webhook_data = req.json()
       console.log(webhook_data)
 
       const { data, error } = await supaclient
