@@ -537,6 +537,31 @@
           "index": false
         }
       ]
+    },
+    {
+      "name": "TicketPurchaseEvent",
+      "fields": [
+        {
+          "name": "entry",
+          "type": "publicKey",
+          "index": false
+        },
+        {
+          "name": "raffle",
+          "type": "publicKey",
+          "index": false
+        },
+        {
+          "name": "user",
+          "type": "publicKey",
+          "index": false
+        },
+        {
+          "name": "count",
+          "type": "u32",
+          "index": false
+        }
+      ]
     }
   ],
   "errors": [
