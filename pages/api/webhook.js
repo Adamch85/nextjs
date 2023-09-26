@@ -34,10 +34,10 @@ export default async function handler(req, res) {
                             const {data, error} = await supaclient
                                 .from('raffles')
                                 .upsert({...event.data, 
-                                    reservePrice: event.reservePrice.toNumber(),
-                                    entryPrice: event.entryPrice.toNumber(),
-                                    startTimestamp: event.startTimestamp.toNumber(),
-                                    endTimestamp: event.endTimestamp.toNumber(),
+                                    reservePrice: event.data.reservePrice.toNumber(),
+                                    entryPrice: event.data.entryPrice.toNumber(),
+                                    startTimestamp: event.data.startTimestamp.toNumber(),
+                                    endTimestamp: event.data.endTimestamp.toNumber(),
                                 })
                             console.log(data)
                             console.log(error)
