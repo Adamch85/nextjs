@@ -562,6 +562,26 @@
           "index": false
         }
       ]
+    },
+    {
+      "name": "WinnerEvent",
+      "fields": [
+        {
+          "name": "raffle",
+          "type": "publicKey",
+          "index": false
+        },
+        {
+          "name": "winner",
+          "type": "publicKey",
+          "index": false
+        },
+        {
+          "name": "numEntries",
+          "type": "u32",
+          "index": false
+        }
+      ]
     }
   ],
   "errors": [
