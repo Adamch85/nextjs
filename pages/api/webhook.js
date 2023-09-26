@@ -30,17 +30,27 @@ export default async function handler(req, res) {
                 let events = eventParser.parseLogs(tx.meta?.logMessages)
                 for (let event of events) {
                     switch (event.name) {
-                        case "NewRaffleEvent":
-                            const {data, error} = await supaclient
+                        case "NewRaffleEvent": {
+                            let {data, error} = await supaclient
                                 .from('raffles')
-                                .upsert({...event.data, 
+                                .upsert({
+                                    ...event.data,
                                     reservePrice: event.data.reservePrice.toNumber(),
                                     entryPrice: event.data.entryPrice.toNumber(),
                                     startTimestamp: event.data.startTimestamp.toNumber(),
                                     endTimestamp: event.data.endTimestamp.toNumber(),
                                 })
-                            console.log(data)
-                            console.log(error)
+                            break
+                        }
+                        case "TicketPurchaseEvent": {
+                            let {data, error} = await supaclient
+                                .from('tickets')
+                                .upsert({
+                                    ...event.data,
+                                    count: event.data.count.toNumber(),
+                                })
+                            break
+                        }
                     }
                 }
             }
