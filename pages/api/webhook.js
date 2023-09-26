@@ -34,6 +34,8 @@ export default async function handler(req, res) {
                             const {data, error} = await supaclient
                                 .from('raffles')
                                 .upsert(event.data)
+                            console.log(data)
+                            console.log(error)
                     }
                 }
             }
