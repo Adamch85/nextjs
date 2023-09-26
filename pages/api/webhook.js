@@ -51,6 +51,16 @@ export default async function handler(req, res) {
                                 })
                             break
                         }
+                        case "WinnerEvent": {
+                            let {data, error} = await supaclient
+                                .from('raffles')
+                                .update({
+                                    winner: event.data.winner,
+                                    numEntries: event.data.numEntries,
+                                })
+                                .eq('raffle', event.data.raffle)
+                            break
+                        }
                     }
                 }
             }
