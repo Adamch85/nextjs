@@ -33,7 +33,12 @@ export default async function handler(req, res) {
                         case "NewRaffleEvent":
                             const {data, error} = await supaclient
                                 .from('raffles')
-                                .upsert(event.data)
+                                .upsert({...event.data, 
+                                    reservePrice: anchor.BN.fromHex(event.reservePrice).toNumber(),
+                                    entryPrice: anchor.BN.fromHex(event.entryPrice).toNumber(),
+                                    startTimestamp: anchor.BN.fromHex(event.startTimestamp).toNumber(),
+                                    endTimestamp: anchor.BN.fromHex(event.endTimestamp).toNumber(),
+                                })
                             console.log(data)
                             console.log(error)
                     }
