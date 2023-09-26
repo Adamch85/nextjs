@@ -47,7 +47,7 @@ export default async function handler(req, res) {
                                 .from('tickets')
                                 .upsert({
                                     ...event.data,
-                                    count: event.data.count.toNumber(),
+                                    count: event.data.count,
                                 })
                             break
                         }
