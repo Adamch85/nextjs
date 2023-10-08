@@ -77,6 +77,11 @@
           "isSigner": false
         },
         {
+          "name": "collectionMint",
+          "isMut": false,
+          "isSigner": false
+        },
+        {
           "name": "mintMetadata",
           "isMut": true,
           "isSigner": false
@@ -177,6 +182,10 @@
           "type": "u32"
         },
         {
+          "name": "maxEntries",
+          "type": "u64"
+        },
+        {
           "name": "entryPrice",
           "type": "u64"
         },
@@ -191,6 +200,12 @@
         {
           "name": "endTimestamp",
           "type": "i64"
+        },
+        {
+          "name": "data",
+          "type": {
+            "defined": "TicketsData"
+          }
         }
       ]
     },
@@ -213,6 +228,26 @@
           "isSigner": false
         },
         {
+          "name": "collectionMint",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "mintMetadata",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "mintEdition",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "collectionRecordPda",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
           "name": "treeConfig",
           "isMut": true,
           "isSigner": false
@@ -228,8 +263,18 @@
           "isSigner": true
         },
         {
+          "name": "bubblegumSigner",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
           "name": "escrowPaymentAccount",
           "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "tokenMetadataProgram",
+          "isMut": false,
           "isSigner": false
         },
         {
@@ -259,6 +304,266 @@
           "type": "u32"
         }
       ]
+    },
+    {
+      "name": "revealWinner",
+      "accounts": [
+        {
+          "name": "luxHaus",
+          "isMut": false,
+          "isSigner": false
+        },
+        {
+          "name": "raffle",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "authority",
+          "isMut": true,
+          "isSigner": true
+        },
+        {
+          "name": "recentSlothashes",
+          "isMut": false,
+          "isSigner": false
+        },
+        {
+          "name": "clock",
+          "isMut": false,
+          "isSigner": false
+        },
+        {
+          "name": "systemProgram",
+          "isMut": false,
+          "isSigner": false
+        }
+      ],
+      "args": []
+    },
+    {
+      "name": "proveWinner",
+      "accounts": [
+        {
+          "name": "raffle",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "winner",
+          "isMut": true,
+          "isSigner": true
+        },
+        {
+          "name": "merkleTree",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "treeConfig",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "logWrapper",
+          "isMut": false,
+          "isSigner": false
+        },
+        {
+          "name": "compressionProgram",
+          "isMut": false,
+          "isSigner": false
+        },
+        {
+          "name": "mplBubblegum",
+          "isMut": false,
+          "isSigner": false
+        },
+        {
+          "name": "systemProgram",
+          "isMut": false,
+          "isSigner": false
+        }
+      ],
+      "args": [
+        {
+          "name": "root",
+          "type": {
+            "array": [
+              "u8",
+              32
+            ]
+          }
+        },
+        {
+          "name": "dataHash",
+          "type": {
+            "array": [
+              "u8",
+              32
+            ]
+          }
+        },
+        {
+          "name": "creatorHash",
+          "type": {
+            "array": [
+              "u8",
+              32
+            ]
+          }
+        },
+        {
+          "name": "nonce",
+          "type": "u64"
+        },
+        {
+          "name": "index",
+          "type": "u32"
+        }
+      ]
+    },
+    {
+      "name": "claim",
+      "accounts": [
+        {
+          "name": "raffle",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "winner",
+          "isMut": true,
+          "isSigner": true
+        },
+        {
+          "name": "luxhausSigner",
+          "isMut": false,
+          "isSigner": false
+        },
+        {
+          "name": "tokenMint",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "srcAccount",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "dstAccount",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "mintMetadata",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "mintEdition",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "srcTokenRecord",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "dstTokenRecord",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "authorizationRules",
+          "isMut": false,
+          "isSigner": false
+        },
+        {
+          "name": "authorizationRulesProgram",
+          "isMut": false,
+          "isSigner": false
+        },
+        {
+          "name": "tokenMetadataProgram",
+          "isMut": false,
+          "isSigner": false
+        },
+        {
+          "name": "sysvarInstructions",
+          "isMut": false,
+          "isSigner": false
+        },
+        {
+          "name": "associatedTokenProgram",
+          "isMut": false,
+          "isSigner": false
+        },
+        {
+          "name": "tokenProgram",
+          "isMut": false,
+          "isSigner": false
+        },
+        {
+          "name": "rent",
+          "isMut": false,
+          "isSigner": false
+        },
+        {
+          "name": "systemProgram",
+          "isMut": false,
+          "isSigner": false
+        }
+      ],
+      "args": []
+    },
+    {
+      "name": "settle",
+      "accounts": [
+        {
+          "name": "luxHaus",
+          "isMut": false,
+          "isSigner": false
+        },
+        {
+          "name": "raffle",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "wallet",
+          "isMut": true,
+          "isSigner": true
+        },
+        {
+          "name": "creator",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "treasury",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "escrowPaymentAccount",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "rent",
+          "isMut": false,
+          "isSigner": false
+        },
+        {
+          "name": "systemProgram",
+          "isMut": false,
+          "isSigner": false
+        }
+      ],
+      "args": []
     }
   ],
   "accounts": [
@@ -292,11 +597,11 @@
             "type": "publicKey"
           },
           {
-            "name": "winner",
+            "name": "mint",
             "type": "publicKey"
           },
           {
-            "name": "mint",
+            "name": "collectionMint",
             "type": "publicKey"
           },
           {
@@ -304,10 +609,26 @@
             "type": "publicKey"
           },
           {
+            "name": "winner",
+            "type": "publicKey"
+          },
+          {
             "name": "status",
             "type": {
               "defined": "RaffleState"
             }
+          },
+          {
+            "name": "maxEntries",
+            "type": "u64"
+          },
+          {
+            "name": "numEntries",
+            "type": "u64"
+          },
+          {
+            "name": "winnerNonce",
+            "type": "u64"
           },
           {
             "name": "reservePrice",
@@ -324,22 +645,12 @@
           {
             "name": "endTimestamp",
             "type": "i64"
-          }
-        ]
-      }
-    },
-    {
-      "name": "Entrants",
-      "type": {
-        "kind": "struct",
-        "fields": [
-          {
-            "name": "remainingEntries",
-            "type": "u32"
           },
           {
-            "name": "totalEntries",
-            "type": "u32"
+            "name": "data",
+            "type": {
+              "defined": "TicketsData"
+            }
           }
         ]
       }
@@ -359,6 +670,58 @@
   ],
   "types": [
     {
+      "name": "TicketsData",
+      "type": {
+        "kind": "struct",
+        "fields": [
+          {
+            "name": "name",
+            "type": "string"
+          },
+          {
+            "name": "symbol",
+            "type": "string"
+          },
+          {
+            "name": "uri",
+            "type": "string"
+          },
+          {
+            "name": "sellerFeeBasisPoints",
+            "type": "u16"
+          },
+          {
+            "name": "creators",
+            "type": {
+              "vec": {
+                "defined": "Creator"
+              }
+            }
+          }
+        ]
+      }
+    },
+    {
+      "name": "Creator",
+      "type": {
+        "kind": "struct",
+        "fields": [
+          {
+            "name": "address",
+            "type": "publicKey"
+          },
+          {
+            "name": "verified",
+            "type": "bool"
+          },
+          {
+            "name": "share",
+            "type": "u8"
+          }
+        ]
+      }
+    },
+    {
       "name": "RaffleState",
       "type": {
         "kind": "enum",
@@ -371,6 +734,12 @@
           },
           {
             "name": "Winner"
+          },
+          {
+            "name": "Claimed"
+          },
+          {
+            "name": "Settled"
           },
           {
             "name": "End"
@@ -394,8 +763,18 @@
           "index": false
         },
         {
+          "name": "collectionMint",
+          "type": "publicKey",
+          "index": false
+        },
+        {
           "name": "creator",
           "type": "publicKey",
+          "index": false
+        },
+        {
+          "name": "maxEntries",
+          "type": "u64",
           "index": false
         },
         {
@@ -444,6 +823,26 @@
           "index": false
         }
       ]
+    },
+    {
+      "name": "WinnerEvent",
+      "fields": [
+        {
+          "name": "raffle",
+          "type": "publicKey",
+          "index": false
+        },
+        {
+          "name": "winner",
+          "type": "u64",
+          "index": false
+        },
+        {
+          "name": "numEntries",
+          "type": "u64",
+          "index": false
+        }
+      ]
     }
   ],
   "errors": [
@@ -454,13 +853,23 @@
     },
     {
       "code": 6001,
+      "name": "InvalidConfigAccount",
+      "msg": "Invalid config account"
+    },
+    {
+      "code": 6002,
       "name": "NumericalOverflow",
       "msg": "Numerical overflow"
     },
     {
-      "code": 6002,
+      "code": 6003,
       "name": "RaffleNotClosed",
       "msg": "Raffle not closed"
+    },
+    {
+      "code": 6004,
+      "name": "WrongWinner",
+      "msg": "Incorrect winner id"
     }
   ]
 }
