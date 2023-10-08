@@ -34,11 +34,8 @@ export default async function handler(req, res) {
                             let {data, error} = await supaclient
                                 .from('raffles')
                                 .upsert({
-                                    ...event.data,
-                                    reservePrice: event.data.reservePrice.toNumber(),
-                                    entryPrice: event.data.entryPrice.toNumber(),
-                                    startTimestamp: event.data.startTimestamp.toNumber(),
-                                    endTimestamp: event.data.endTimestamp.toNumber(),
+                                    raffle: event.data.raffle,
+                                    status: 0,
                                 })
                             break
                         }
