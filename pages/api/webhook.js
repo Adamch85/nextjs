@@ -51,8 +51,9 @@ export default async function handler(req, res) {
                     let data = bs58.decode(ix.data, 'hex')
                     let ixDisc = Buffer.from(data.slice(0,8)).toString('hex')
                     let isBuyTicket = ixDisc == "0b1811c1a874a4a9"
-
                     if (isBuyTicket) {
+                        console.log("here")
+                        console.log(accounts)
                         let entry = accounts[ix.accounts[0]]
                         let raffle = accounts[ix.accounts[1]]
                         let user = accounts[ix.accounts[9]]
@@ -62,7 +63,6 @@ export default async function handler(req, res) {
                                     raffle:raffle,
                                     user:user,
                                     count: count, 
-                                    txid: tx.transaction.signatures[0]
                                 })
                         console.log("here")
                         let {data, error} = await supaclient
