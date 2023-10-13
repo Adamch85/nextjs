@@ -26,8 +26,6 @@ export default async function handler(req, res) {
 
             let webhook_data = req.body
 
-            console.log(webhook_data);
-
             for (const tx of webhook_data) {
                 let events = eventParser.parseLogs(tx.meta?.logMessages)
                 for (let event of events) {
@@ -55,9 +53,9 @@ export default async function handler(req, res) {
                     let isBuyTicket = ixDisc == "0b1811c1a874a4a9"
 
                     if (isBuyTicket) {
-                        let entry = accounts[ix.accounts[0]].toBase58()
-                        let raffle = accounts[ix.accounts[1]].toBase58()
-                        let user = accounts[ix.accounts[9]].toBase58()
+                        let entry = accounts[ix.accounts[0]]
+                        let raffle = accounts[ix.accounts[1]]
+                        let user = accounts[ix.accounts[9]]
                         let count = parseInt(Buffer.from(data.slice(8,12).reverse()).toString('hex'), 16)
                         let {data, error} = await supaclient
                                 .from('tickets')
@@ -73,8 +71,6 @@ export default async function handler(req, res) {
             }
 
             res.status(200).json("success")
-
-            // console.log(data, error)
 
         }
 
