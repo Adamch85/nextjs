@@ -47,17 +47,14 @@ export default async function handler(req, res) {
                 let programIdIndex = accounts.findIndex((element) => (element == programId.toBase58()))
                 let instructions = tx.transaction.message.instructions.filter((ix) => ix.programIdIndex == programIdIndex)
                 for (const ix of instructions) {
-                    let data = bs58.decode(ix.data, 'hex')
-                    let ixDisc = Buffer.from(data.slice(0,8)).toString('hex')
+                    let ixData = bs58.decode(ix.data, 'hex')
+                    let ixDisc = Buffer.from(ixData.slice(0,8)).toString('hex')
                     let isBuyTicket = ixDisc == "0b1811c1a874a4a9"
                     if (isBuyTicket) {
-                        console.log(accounts)
                         let entry = accounts[ix.accounts[0]]
                         let raffle = accounts[ix.accounts[1]]
                         let user = accounts[ix.accounts[9]]
-                        console.log(user)
-                        console.log("here")
-                        let count = Number.parseInt(Buffer.from(data.slice(8,12).reverse()).toString('hex'), 16)
+                        let count = Number.parseInt(Buffer.from(ixData.slice(8,12).reverse()).toString('hex'), 16)
                         console.log(count)
                         console.log("here2")
                         console.log({
