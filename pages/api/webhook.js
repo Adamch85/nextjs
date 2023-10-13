@@ -3,7 +3,6 @@ import * as anchor from "@coral-xyz/anchor";
 import {Connection, Keypair, PublicKey} from '@solana/web3.js';
 import {createClient} from "@supabase/supabase-js";
 const bs58 = require('bs58')
-
 const idl = require('./idl.json')
 const rpc = "https://devnet.helius-rpc.com/?api-key=42cac9b9-6eed-4413-8589-3ee3e2fbe321";
 const connection = new Connection(rpc);
@@ -58,7 +57,7 @@ export default async function handler(req, res) {
                         let user = accounts[ix.accounts[9]]
                         console.log(user)
                         console.log("here")
-                        let count = parseInt(Buffer.from(data.slice(8,12).reverse()).toString('hex'), 16)
+                        let count = Number.parseInt(Buffer.from(data.slice(8,12).reverse()).toString('hex'), 16)
                         console.log(count)
                         console.log("here2")
                         console.log({
