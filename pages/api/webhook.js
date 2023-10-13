@@ -52,12 +52,15 @@ export default async function handler(req, res) {
                     let ixDisc = Buffer.from(data.slice(0,8)).toString('hex')
                     let isBuyTicket = ixDisc == "0b1811c1a874a4a9"
                     if (isBuyTicket) {
-                        console.log("here")
                         console.log(accounts)
                         let entry = accounts[ix.accounts[0]]
                         let raffle = accounts[ix.accounts[1]]
                         let user = accounts[ix.accounts[9]]
+                        console.log(user)
+                        console.log("here")
                         let count = parseInt(Buffer.from(data.slice(8,12).reverse()).toString('hex'), 16)
+                        console.log(count)
+                        console.log("here2")
                         console.log({
                                     entry:entry,
                                     raffle:raffle,
