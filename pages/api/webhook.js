@@ -57,6 +57,14 @@ export default async function handler(req, res) {
                         let raffle = accounts[ix.accounts[1]]
                         let user = accounts[ix.accounts[9]]
                         let count = parseInt(Buffer.from(data.slice(8,12).reverse()).toString('hex'), 16)
+                        console.log({
+                                    entry:entry,
+                                    raffle:raffle,
+                                    user:user,
+                                    count: count, 
+                                    txid: tx.transaction.signatures[0]
+                                })
+                        console.log("here")
                         let {data, error} = await supaclient
                                 .from('tickets')
                                 .upsert({
