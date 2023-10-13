@@ -47,7 +47,7 @@ export default async function handler(req, res) {
 
             for (const tx of webhook_data) {
                 let accounts = tx.transaction.message.accountKeys;
-                let programIdIndex = accounts.findIndex((element) => (element == programId.toBase58())
+                let programIdIndex = accounts.findIndex((element) => (element == programId.toBase58()))
                 let instructions = tx.transaction.message.instructions.filter((ix) => ix.programIdIndex == programIdIndex)
                 for (const ix of instructions) {
                     let data = bs58.decode(ix.data, 'hex')
