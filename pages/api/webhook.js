@@ -26,6 +26,8 @@ export default async function handler(req, res) {
 
             let webhook_data = req.body
 
+            console.log(webhook_data);
+
             for (const tx of webhook_data) {
                 let events = eventParser.parseLogs(tx.meta?.logMessages)
                 for (let event of events) {
