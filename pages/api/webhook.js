@@ -10,8 +10,8 @@ const connection = new Connection(rpc);
 const keypair = Keypair.fromSecretKey(bs58.decode(process.env.SECRET_KEY))
 const wallet = new anchor.Wallet(keypair);
 const provider = new anchor.AnchorProvider(connection, wallet, {preflightCommitment: "processed"});
-const programID = new PublicKey("DfinCfYioVNG7UXFf1qxMS2Ycr9GrFBLBn9QPuHhnRUi");
-const program = new anchor.Program(idl, programID, provider);
+const programId = new PublicKey("DfinCfYioVNG7UXFf1qxMS2Ycr9GrFBLBn9QPuHhnRUi");
+const program = new anchor.Program(idl, programId, provider);
 const eventParser = new anchor.EventParser(
     program.programId,
     program.coder
@@ -41,27 +41,34 @@ export default async function handler(req, res) {
                                 })
                             break
                         }
-                        case "TicketPurchaseEvent": {
-                            let {data, error} = await supaclient
-                                .from('tickets')
-                                .upsert({
-                                    ...event.data,
-                                    count: event.data.count,
-                                })
-                            break
-                        }
-                        case "WinnerEvent": {
-                            let {data, error} = await supaclient
-                                .from('raffles')
-                                .update({
-                                    winner: event.data.winner,
-                                    numEntries: event.data.numEntries,
-                                })
-                                .eq('raffle', event.data.raffle)
-                            break
-                        }
                     }
                 }
+            }
+
+            for (const tx of webhook_data) {
+                let accounts = tx.transaction.message.accountKeys;
+                let programIdIndex = accounts.findIndex((element) => (element == programId.toBase58())
+                let instructions = tx.transaction.message.instructions.filter((ix) => ix.programIdIndex == programIdIndex)
+                for (const ix of instructions) {
+                    let data = bs58.decode(ix.data, 'hex')
+                    let ixDisc = Buffer.from(data.slice(0,8)).toString('hex')
+                    let isBuyTicket = ixDisc == "0b1811c1a874a4a9"
+
+                    if (isBuyTicket) {
+                        let entry = accounts[ix.accounts[0]].toBase58()
+                        let raffle = accounts[ix.accounts[1]].toBase58()
+                        let user = accounts[ix.accounts[9]].toBase58()
+                        let count = parseInt(Buffer.from(data.slice(8,12).reverse()).toString('hex'), 16)
+                        let {data, error} = await supaclient
+                                .from('tickets')
+                                .upsert({
+                                    entry:entry,
+                                    raffle:raffle,
+                                    user:user,
+                                    count: count, 
+                                    txid: tx.transaction.signatures[0]
+                                })
+                    }
             }
 
             res.status(200).json("success")
