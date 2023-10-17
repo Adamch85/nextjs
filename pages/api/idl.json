@@ -831,15 +831,39 @@
           "name": "raffle",
           "type": "publicKey",
           "index": false
-        },
+        }
+      ]
+    },
+    {
+      "name": "ClaimEvent",
+      "fields": [
         {
-          "name": "winner",
-          "type": "u64",
+          "name": "raffle",
+          "type": "publicKey",
           "index": false
         },
         {
-          "name": "numEntries",
-          "type": "u64",
+          "name": "status",
+          "type": {
+            "defined": "RaffleState"
+          },
+          "index": false
+        }
+      ]
+    },
+    {
+      "name": "SettleEvent",
+      "fields": [
+        {
+          "name": "raffle",
+          "type": "publicKey",
+          "index": false
+        },
+        {
+          "name": "status",
+          "type": {
+            "defined": "RaffleState"
+          },
           "index": false
         }
       ]
