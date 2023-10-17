@@ -48,7 +48,37 @@ export default async function handler(req, res) {
                             break;
                         }
                         case "ClaimEvent": {
-                            console.log(event.data)
+                            let state = 0;
+                            if ('claimed' in event.data.status) {
+                                state = 3;
+                            } else if ('end' in event.data.status) {
+                                state = 5;
+                            }
+                            if (state != 0) {
+                                let {data, error} = await supaclient
+                                    .from('raffles')
+                                    .upsert({
+                                        raffle: event.data.raffle,
+                                        status: state,
+                                    })
+                            }
+                            break;
+                        }    
+                        case "SettleEvent": {
+                            let state = 0;
+                            if ('settled' in event.data.status) {
+                                state = 4;
+                            } else if ('end' in event.data.status) {
+                                state = 5;
+                            }
+                            if (state != 0) {
+                                let {data, error} = await supaclient
+                                    .from('raffles')
+                                    .upsert({
+                                        raffle: event.data.raffle,
+                                        status: state,
+                                    })    
+                            }
                             break;
                         }    
                     }
