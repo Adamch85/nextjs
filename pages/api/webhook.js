@@ -36,8 +36,21 @@ export default async function handler(req, res) {
                                     raffle: event.data.raffle,
                                     status: 0,
                                 })
-                            break
+                            break;
                         }
+                        case "WinnerEvent": {
+                            let {data, error} = await supaclient
+                                .from('raffles')
+                                .upsert({
+                                    raffle: event.data.raffle,
+                                    status: 2,
+                                })
+                            break;
+                        }
+                        case "ClaimEvent": {
+                            console.log(event.data)
+                            break;
+                        }    
                     }
                 }
             }
