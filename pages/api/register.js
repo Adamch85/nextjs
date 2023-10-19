@@ -1,6 +1,7 @@
 // Next.js API route support: https://nextjs.org/docs/api-routes/introduction
 import {createClient} from "@supabase/supabase-js";
 import {LAMPORTS_PER_SOL, SystemProgram} from "@solana/web3.js";
+const bs58 = require('bs58')
 
 
 const supaclient = createClient(process.env.SUPABASE_URL, process.env.SUPABASE_KEY);
