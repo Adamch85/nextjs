@@ -15,7 +15,7 @@ export default async function handler(req, res) {
                 for (const ix of instructions) {
                     let ixData = bs58.decode(ix.data, 'hex')
                     let ixDisc = Buffer.from(ixData.slice(0, 4)).toString('hex')
-                    let isTransfer = ixDisc == "0200000000"
+                    let isTransfer = ixDisc == "02000000"
                     if (isTransfer) {
                         let count = Number.parseInt(Buffer.from(ixData.slice(4, 12).reverse()).toString('hex'), 16)
                         if (count == 0.1 * LAMPORTS_PER_SOL) {
