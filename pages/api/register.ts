@@ -1,14 +1,10 @@
-import type {NextApiRequest, NextApiResponse} from 'next';
+// Next.js API route support: https://nextjs.org/docs/api-routes/introduction
 import {createClient} from "@supabase/supabase-js";
 import {LAMPORTS_PER_SOL, SystemProgram} from "@solana/web3.js";
 
+
 const supaclient = createClient(process.env.SUPABASE_URL, process.env.SUPABASE_KEY);
-
-
-export default async function handler(
-    req: NextApiRequest,
-    res: NextApiResponse
-) {
+export default async function handler(req, res) { {
     try {
          if (req.method === "POST") {
             let webhook_data = req.body
@@ -45,5 +41,4 @@ export default async function handler(
         console.log(err)
         
     }
-
 }
