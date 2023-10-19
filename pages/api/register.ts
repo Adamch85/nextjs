@@ -4,7 +4,7 @@ import {LAMPORTS_PER_SOL, SystemProgram} from "@solana/web3.js";
 
 
 const supaclient = createClient(process.env.SUPABASE_URL, process.env.SUPABASE_KEY);
-export default async function handler(req, res) { {
+export default async function handler(req, res) {
     try {
          if (req.method === "POST") {
             let webhook_data = req.body
