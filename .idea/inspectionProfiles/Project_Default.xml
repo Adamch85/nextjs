@@ -1,0 +1,59 @@
+<component name="InspectionProjectProfileManager">
+  <profile version="1.0">
+    <option name="myName" value="Project Default" />
+    <inspection_tool class="BadExpressionStatementJS" enabled="false" level="WEAK WARNING" enabled_by_default="false" />
+    <inspection_tool class="CargoTomlCyclicFeature" enabled="false" level="ERROR" enabled_by_default="false" />
+    <inspection_tool class="CrateNotFound" enabled="false" level="WARNING" enabled_by_default="false" />
+    <inspection_tool class="CrateVersionInvalid" enabled="false" level="WARNING" enabled_by_default="false" />
+    <inspection_tool class="PyPackageRequirementsInspection" enabled="true" level="WARNING" enabled_by_default="true">
+      <option name="ignoredPackages">
+        <value>
+          <list size="5">
+            <item index="0" class="java.lang.String" itemvalue="two1" />
+            <item index="1" class="java.lang.String" itemvalue="rlp" />
+            <item index="2" class="java.lang.String" itemvalue="eth_utils" />
+            <item index="3" class="java.lang.String" itemvalue="pycryptodome" />
+            <item index="4" class="java.lang.String" itemvalue="pycrypto" />
+          </list>
+        </value>
+      </option>
+    </inspection_tool>
+    <inspection_tool class="PyPep8Inspection" enabled="true" level="WEAK WARNING" enabled_by_default="true">
+      <option name="ignoredErrors">
+        <list>
+          <option value="E501" />
+          <option value="E303" />
+        </list>
+      </option>
+    </inspection_tool>
+    <inspection_tool class="RsArgumentNaming" enabled="false" level="WARNING" enabled_by_default="false" />
+    <inspection_tool class="RsAssocTypeNaming" enabled="false" level="WARNING" enabled_by_default="false" />
+    <inspection_tool class="RsBareTraitObjects" enabled="false" level="WARNING" enabled_by_default="false" />
+    <inspection_tool class="RsConstNaming" enabled="false" level="WARNING" enabled_by_default="false" />
+    <inspection_tool class="RsDeprecation" enabled="false" level="WARNING" enabled_by_default="false" />
+    <inspection_tool class="RsEnumNaming" enabled="false" level="WARNING" enabled_by_default="false" />
+    <inspection_tool class="RsEnumVariantNaming" enabled="false" level="WARNING" enabled_by_default="false" />
+    <inspection_tool class="RsFieldNaming" enabled="false" level="WARNING" enabled_by_default="false" />
+    <inspection_tool class="RsFunctionNaming" enabled="false" level="WARNING" enabled_by_default="false" />
+    <inspection_tool class="RsLifetimeNaming" enabled="false" level="WARNING" enabled_by_default="false" />
+    <inspection_tool class="RsLiveness" enabled="false" level="WARNING" enabled_by_default="false" />
+    <inspection_tool class="RsMacroNaming" enabled="false" level="WARNING" enabled_by_default="false" />
+    <inspection_tool class="RsMethodNaming" enabled="false" level="WARNING" enabled_by_default="false" />
+    <inspection_tool class="RsModuleNaming" enabled="false" level="WARNING" enabled_by_default="false" />
+    <inspection_tool class="RsNeedlessLifetimes" enabled="false" level="WEAK WARNING" enabled_by_default="false" />
+    <inspection_tool class="RsNonShorthandFieldPatterns" enabled="false" level="WEAK WARNING" enabled_by_default="false" />
+    <inspection_tool class="RsSelfConvention" enabled="false" level="WARNING" enabled_by_default="false" />
+    <inspection_tool class="RsStaticConstNaming" enabled="false" level="WARNING" enabled_by_default="false" />
+    <inspection_tool class="RsStructNaming" enabled="false" level="WARNING" enabled_by_default="false" />
+    <inspection_tool class="RsTraitNaming" enabled="false" level="WARNING" enabled_by_default="false" />
+    <inspection_tool class="RsTypeAliasNaming" enabled="false" level="WARNING" enabled_by_default="false" />
+    <inspection_tool class="RsTypeCheck" enabled="false" level="ERROR" enabled_by_default="false" />
+    <inspection_tool class="RsTypeParameterNaming" enabled="false" level="WARNING" enabled_by_default="false" />
+    <inspection_tool class="RsUnreachableCode" enabled="false" level="WARNING" enabled_by_default="false" />
+    <inspection_tool class="RsUnreachablePatterns" enabled="false" level="WARNING" enabled_by_default="false" />
+    <inspection_tool class="RsVariableNaming" enabled="false" level="WARNING" enabled_by_default="false" />
+    <inspection_tool class="RsWhileTrueLoop" enabled="false" level="WEAK WARNING" enabled_by_default="false" />
+    <inspection_tool class="TsLint" enabled="true" level="WARNING" enabled_by_default="true" />
+    <inspection_tool class="TypeScriptValidateTypes" enabled="false" level="ERROR" enabled_by_default="false" />
+  </profile>
+</component>

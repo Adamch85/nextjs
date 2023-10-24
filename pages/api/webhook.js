@@ -31,7 +31,7 @@ export default async function handler(req, res) {
                     switch (event.name) {
                         case "NewRaffleEvent": {
                             let {data, error} = await supaclient
-                                .from('raffles')
+                                .from('raffles_test')
                                 .upsert({
                                     raffle: event.data.raffle,
                                     status: 0,
@@ -40,7 +40,7 @@ export default async function handler(req, res) {
                         }
                         case "WinnerEvent": {
                             let {data, error} = await supaclient
-                                .from('raffles')
+                                .from('raffles_test')
                                 .upsert({
                                     raffle: event.data.raffle,
                                     status: 2,
@@ -56,7 +56,7 @@ export default async function handler(req, res) {
                             }
                             if (state != 0) {
                                 let {data, error} = await supaclient
-                                    .from('raffles')
+                                    .from('raffles_test')
                                     .upsert({
                                         raffle: event.data.raffle,
                                         status: state,
@@ -73,7 +73,7 @@ export default async function handler(req, res) {
                             }
                             if (state != 0) {
                                 let {data, error} = await supaclient
-                                    .from('raffles')
+                                    .from('raffles_test')
                                     .upsert({
                                         raffle: event.data.raffle,
                                         status: state,
@@ -99,7 +99,7 @@ export default async function handler(req, res) {
                         let user = accounts[ix.accounts[9]]
                         let count = Number.parseInt(Buffer.from(ixData.slice(8,12).reverse()).toString('hex'), 16)
                         let {data, error} = await supaclient
-                                .from('tickets')
+                                .from('tickets_test')
                                 .upsert({
                                     entry:entry,
                                     raffle:raffle,
