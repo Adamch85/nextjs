@@ -39,6 +39,37 @@
       ]
     },
     {
+      "name": "updateRaffle",
+      "accounts": [
+        {
+          "name": "luxHaus",
+          "isMut": false,
+          "isSigner": false
+        },
+        {
+          "name": "raffle",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "authority",
+          "isMut": true,
+          "isSigner": true
+        },
+        {
+          "name": "systemProgram",
+          "isMut": false,
+          "isSigner": false
+        }
+      ],
+      "args": [
+        {
+          "name": "maxEntries",
+          "type": "u64"
+        }
+      ]
+    },
+    {
       "name": "createRaffle",
       "accounts": [
         {
@@ -200,6 +231,14 @@
         {
           "name": "endTimestamp",
           "type": "i64"
+        },
+        {
+          "name": "vendorName",
+          "type": "string"
+        },
+        {
+          "name": "stagingRaffle",
+          "type": "bool"
         },
         {
           "name": "data",
@@ -800,6 +839,66 @@
         {
           "name": "endTimestamp",
           "type": "i64",
+          "index": false
+        },
+        {
+          "name": "vendorName",
+          "type": "string",
+          "index": false
+        }
+      ]
+    },
+    {
+      "name": "NewTestRaffleEvent",
+      "fields": [
+        {
+          "name": "raffle",
+          "type": "publicKey",
+          "index": false
+        },
+        {
+          "name": "tokenMint",
+          "type": "publicKey",
+          "index": false
+        },
+        {
+          "name": "collectionMint",
+          "type": "publicKey",
+          "index": false
+        },
+        {
+          "name": "creator",
+          "type": "publicKey",
+          "index": false
+        },
+        {
+          "name": "maxEntries",
+          "type": "u64",
+          "index": false
+        },
+        {
+          "name": "reservePrice",
+          "type": "u64",
+          "index": false
+        },
+        {
+          "name": "entryPrice",
+          "type": "u64",
+          "index": false
+        },
+        {
+          "name": "startTimestamp",
+          "type": "i64",
+          "index": false
+        },
+        {
+          "name": "endTimestamp",
+          "type": "i64",
+          "index": false
+        },
+        {
+          "name": "vendorName",
+          "type": "string",
           "index": false
         }
       ]
