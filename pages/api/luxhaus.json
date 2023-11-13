@@ -233,10 +233,6 @@
           "type": "i64"
         },
         {
-          "name": "vendorName",
-          "type": "string"
-        },
-        {
           "name": "stagingRaffle",
           "type": "bool"
         },
@@ -840,11 +836,6 @@
           "name": "endTimestamp",
           "type": "i64",
           "index": false
-        },
-        {
-          "name": "vendorName",
-          "type": "string",
-          "index": false
         }
       ]
     },
@@ -894,11 +885,6 @@
         {
           "name": "endTimestamp",
           "type": "i64",
-          "index": false
-        },
-        {
-          "name": "vendorName",
-          "type": "string",
           "index": false
         }
       ]

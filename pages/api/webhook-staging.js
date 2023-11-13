@@ -35,7 +35,6 @@ export default async function handler(req, res) {
                                 .upsert({
                                     raffle: event.data.raffle,
                                     status: 0,
-                                    vendor: event.data.vendorName,
                                 })
                             break;
                         }
@@ -45,7 +44,6 @@ export default async function handler(req, res) {
                                 .upsert({
                                     raffle: event.data.raffle,
                                     status: 0,
-                                    vendor: event.data.vendorName,
                                 })
                             break;
                         }

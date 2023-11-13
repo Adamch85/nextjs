@@ -3,7 +3,7 @@ import * as anchor from "@coral-xyz/anchor";
 import {Connection, Keypair, PublicKey} from '@solana/web3.js';
 import {createClient} from "@supabase/supabase-js";
 const bs58 = require('bs58')
-const idl = require('./idl-main.json')
+const idl = require('./luxhaus.json')
 const rpc = "https://rpc.helius.xyz/?api-key=6a2fc38a-6fc6-4f1a-ba23-a1ca4e65937e";
 const connection = new Connection(rpc);
 const keypair = Keypair.fromSecretKey(bs58.decode(process.env.SECRET_KEY))
