@@ -17,14 +17,13 @@ const eventParser = new anchor.EventParser(
 );
 
 
-const supaclient = createClient(process.env.SUPABASE_URL, process.env.SUPABASE_KEY);
+const supaclient = createClient(process.env.SUPABASE_URL_STAGING, process.env.SUPABASE_KEY_STAGING);
 export default async function handler(req, res) {
 
     try {
         if (req.method === "POST") {
 
             let webhook_data = req.body
-
             for (const tx of webhook_data) {
                 let events = eventParser.parseLogs(tx.meta?.logMessages)
                 for (let event of events) {
