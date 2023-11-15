@@ -66,6 +66,14 @@
         {
           "name": "maxEntries",
           "type": "u64"
+        },
+        {
+          "name": "startTimestamp",
+          "type": "i64"
+        },
+        {
+          "name": "endTimestamp",
+          "type": "i64"
         }
       ]
     },
@@ -247,6 +255,11 @@
     {
       "name": "buyTicket",
       "accounts": [
+        {
+          "name": "luxHaus",
+          "isMut": false,
+          "isSigner": false
+        },
         {
           "name": "entry",
           "isMut": true,

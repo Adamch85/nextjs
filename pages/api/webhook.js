@@ -93,9 +93,9 @@ export default async function handler(req, res) {
                     let ixDisc = Buffer.from(ixData.slice(0,8)).toString('hex')
                     let isBuyTicket = ixDisc == "0b1811c1a874a4a9"
                     if (isBuyTicket) {
-                        let entry = accounts[ix.accounts[0]]
-                        let raffle = accounts[ix.accounts[1]]
-                        let user = accounts[ix.accounts[9]]
+                        let entry = accounts[ix.accounts[1]]
+                        let raffle = accounts[ix.accounts[2]]
+                        let user = accounts[ix.accounts[10]]
                         let count = Number.parseInt(Buffer.from(ixData.slice(8,12).reverse()).toString('hex'), 16)
                         let {data, error} = await supaclient
                                 .from('tickets_local')
